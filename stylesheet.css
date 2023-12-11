@@ -1,0 +1,10 @@
+.container{
+    margin-top: 100px;
+}
+
+.newElement{
+    width: 100px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}

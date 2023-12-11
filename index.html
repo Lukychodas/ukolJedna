@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div id="testElement">
+        Toto je <strong>testovací</strong> element.<br>
+        <span>Má i nějaké <em>HTML značky</em> uvnitř.</span>
+    </div>
+
+    <div id="result">
+        <!-- Zde se zobrazí výsledky -->
+    </div>
+
+    <div id="container">
+        <button id="addElement">
+            Přidej Element 🚀
+        </button>
+        <button id="delElement">
+            Odeber Element 🚀
+        </button>
+    </div>
+<script type="module">
+    function inner(){
+        const test = document.getElementById("testElement");
+        const result = document.getElementById("result");
+
+        const innerTexto = test.innerText;
+        result.innerText = innerTexto;
+    }
+    function content(){
+        const test = document.getElementById("testElement");
+        const result = document.getElementById("result");
+
+        const contento = test.textContent;
+
+        result.innerText = contento;
+    }
+
+    inner();
+    content();
+
+    const button = document.querySelector("#addElement");
+    button.addEventListener("click", funkcePoKliknuti);
+
+    const delbutton = document.querySelector("#delElement");
+    delbutton.addEventListener("click", deleteElement);
+
+    function funkcePoKliknuti(){
+        const newElement = document.createElement("div");
+        let color = "";
+
+        let randomColor = Math.ceil(Math.random() * 3);
+        if(randomColor === 1) {
+            color = "red";
+        } else {
+            if (randomColor === 2) {
+                color = "yellow";
+            } else {
+                if(randomColor === 3) {
+                    color = "blue";
+                }
+            }
+        }
+        newElement.style.background = color;
+        newElement.innerText = "Nový Element 🌈";
+        newElement.classList.add("newElement");
+        document.querySelector("#container").appendChild(newElement);
+    }
+
+    function deleteElement(){
+        let lastKid = document.getElementById("container").lastChild;
+        if(lastKid.tagName === "DIV"){
+            lastKid.remove();
+        }
+    }
+</script>
+</body>
+</html>
